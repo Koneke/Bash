@@ -42,6 +42,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Model\Bash.cs" />
+    <Compile Include="Controller\BashController.cs" />
+    <Compile Include="Controller\BashInputSpout.cs" />
+    <Compile Include="Model\Character\Character.cs" />
+    <Compile Include="Model\Item\Item.cs" />
+    <Compile Include="Model\Map\Map.cs" />
+    <Compile Include="View\BashView.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="program.cs" />
     <None Include="Program.cs.bak" />
@@ -130,6 +137,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
