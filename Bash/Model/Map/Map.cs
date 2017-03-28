@@ -3,12 +3,6 @@ using System.Collections.Generic;
 
 namespace Bash
 {
-	public struct Position
-	{
-		public int X;
-		public int Y;
-	}
-
 	public class Submap<T> where T : class
 	{
 		private class Row
@@ -24,6 +18,18 @@ namespace Bash
 			{
 				return this.columns[column];
 			}
+
+			public int? ColumnOf(T item)
+			{
+				return this.columns.Contains(item)
+					? (int?)columns.IndexOf(item)
+					: null;
+			}
+
+			public bool Contains(T item)
+			{
+				return this.columns.Contains(item);
+			}
 		}
 
 		private List<Row> Rows;
@@ -33,16 +39,34 @@ namespace Bash
 			return this.Rows[position.Y].GetAt(position.X);
 		}
 
+		public Position PositionOf(T item)
+		{
+			var r = this.Rows.FirstOrDefault(x => x.Contains(item));
+
+			if (r == default(T))
+			{
+				return null;
+			}
+
+			var row = this.Rows.IndexOf(r);
+
+			// We already know it's contained, so .Value
+			var col = r.ColumnOf(item).Value;
+
+			return new Position(col, row);
+		}
+
 		public Submap(int width, int height, T defaultValue = null)
 		{
 			this.Rows = Enumerable.Repeat(new Row(width, defaultValue), height).ToList();
 		}
 	}
+
 	public class Map
 	{
-		Submap<Terrain> Terrain;
-		Submap<Item> Items;
-		Submap<Character> Characters;
+		public Submap<Terrain> Terrain;
+		public Submap<Item> Items;
+		public Submap<Character> Characters;
 
 		public Map(int width, int height)
 		{

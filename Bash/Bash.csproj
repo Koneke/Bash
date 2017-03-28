@@ -49,7 +49,6 @@
     <Compile Include="Model\Item\Item.cs" />
     <Compile Include="Model\Map\Map.cs" />
     <Compile Include="View\BashView.cs" />
-    <Compile Include="Game1.cs" />
     <Compile Include="program.cs" />
     <None Include="Program.cs.bak" />
     <Compile Include="Properties\AssemblyInfo.cs" />

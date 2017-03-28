@@ -80,6 +80,7 @@ namespace Bash
 		private void Init()
 		{
 			this.console = new SadConsole.Console(80, 25);
+			console.Print(0, 0, ":)");
 
 			// render here.
 			console.Fill(Color.White, Color.Black, null);

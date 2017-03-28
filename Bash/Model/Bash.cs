@@ -8,6 +8,50 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Bash
 {
+	public class Position
+	{
+		public int X;
+		public int Y;
+
+		public Position(int x, int y)
+		{
+			this.X = x;
+			this.Y = y;
+		}
+	}
+
+	public class Direction
+	{
+		public Direction(int dx, int dy)
+		{
+		}
+	}
+
+	// Commands are created by the Controller (Brain for AI),
+	// and then *applied* to characters.
+
+	public class MovementCommand : Command
+	{
+		private Direction direction;
+
+		public MovementCommand(Direction direction)
+		{
+			this.direction = direction;
+		}
+
+		public override void ApplyTo(Character character)
+		{
+			throw new NotImplementedException();
+
+			var terrain = character.Map.Terrain.GetAt(character.Position);
+		}
+	}
+
+	public abstract class Command
+	{
+		public abstract void ApplyTo(Character character);
+	}
+
 	public class Terrain
 	{
 	}
